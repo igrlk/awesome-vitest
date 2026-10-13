@@ -4,7 +4,16 @@ Submissions are welcome!
 
 ## Quick Start
 
-Use the included [agent skill](.agents/skills/add-entry/SKILL.md) to assess a resource and add it to the list if it’s a good fit. Clone the repository, then ask your agent:
+Use the included [agent skill](.agents/skills/add-entry/SKILL.md) to assess a resource and add it to the list if it’s a good fit. Pass this prompt to your agent:
+
+```
+Resource: <resource-url>
+Repository: https://github.com/porada/awesome-vitest
+
+Clone the repository, then follow the instructions in `.agents/skills/add-entry/SKILL.md`. Push any commits to my fork, creating one if needed.
+```
+
+If you’ve already cloned the repository, use the skill directly:
 
 ```
 /add-entry <resource-url>

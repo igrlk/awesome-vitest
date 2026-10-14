@@ -106,6 +106,7 @@
 
 ### Visual Regression Testing
 
+- [**v-snap**](https://github.com/yortus/mvt-games/tree/main/packages/v-snap) — Snapshot canvas and HTML views in Chromium with controlled fonts and software rendering.
 - [**vitest-image-snapshot**](https://github.com/webgpu-tools/wesl-js/tree/main/packages/vitest-image-snapshot) — Compare `ImageData` and PNG buffers against baselines, with HTML diff reports.
 - [**vitest-pdf-snapshot**](https://github.com/dapotatoman/vitest-pdf-snapshot) — Compare rendered PDFs against PNG snapshots.
 - [**vitest-screenshot**](https://github.com/bhouston/vitest-gpu/tree/main/packages/vitest-screenshot) — Compare canvases and pixel buffers against image baselines in Node.js.

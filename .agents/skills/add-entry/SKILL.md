@@ -12,11 +12,13 @@ metadata:
 
 Assess supplied resources for Awesome Vitest and prepare entries for maintainers or prospective contributors. Apply the same inclusion standard to someone’s own package and to resources they do not maintain.
 
+Before resolving scope, complete [maintainer verification](#verify-maintainer-account).
+
 ## Resolve Scope
 
 A candidate link or name requests an inclusion assessment and, when suitable, a draft entry. For an explicit wording-only request, consult the relevant parts of Awesome Vitest and continue at [Prepare Entry](#prepare-entry) without reopening a settled inclusion decision. If editing reveals a concrete suitability problem, disclose it rather than silently turning the request into a broader investigation. When wording is explicitly requested after a negative assessment, provide it without implying that the recommendation changed.
 
-Process every supplied item independently, preserving input order and reusing shared evidence. Limit additional investigation to what resolves those items. Do not discover unrelated resources, audit the inventory, or restructure its headings.
+Process every supplied item independently, preserving input order and reusing shared evidence. Limit additional investigation to what resolves those items. Do not discover unrelated resources or audit the inventory.
 
 Default to read-only assessment and draft output. Invocation alone does not authorize repository edits, commits, submissions, or publication. Follow separately requested changes within their explicit scope and applicable approval boundaries. A recommendation is not maintainer acceptance, and approval of wording is not approval to include a resource.
 
@@ -69,7 +71,7 @@ If `human-facing-writing` is not available locally and retrieving it would mater
 - **Identity and destination:** Use the verified resource name. For a package supplied through npm or another non-GitHub URL, try to locate its GitHub repository. Prefer a useful GitHub destination over npm. In a monorepo, inspect the relevant package directory and use it when it has a substantive README and makes a useful landing page. Otherwise use the repository root rather than an undocumented subdirectory. Canonical documentation links are also valid destinations for package entries.
 - **Capability and distinction:** Describe what the resource helps readers do. Preserve a material distinction from nearby alternatives without listing incidental implementation details or letting one minor feature misrepresent its breadth. Emphasize benchmarks only when they are a highlight feature.
 - **Wording and consistency:** Keep the description concise and concrete. Match useful nearby patterns and deliberate parallel wording while retaining differences. Sentence fragments and verb-led descriptions can both fit. Avoid repeating context from Awesome Vitest or the target heading when it adds no information, but do not turn words such as `Dedicated`, `Vitest`, or `environment` into universal requirements or prohibitions.
-- **Placement:** Follow the [category organization rules](../../../AGENTS.md#category-organization).
+- **Placement:** Follow the [project category rules](../../../AGENTS.md#category-organization). Use existing categories without suggesting or making category changes. If the maintainer workflow is enabled, follow its [category guidance](references/maintainer-workflow.md#suggest-category-changes) for exceptions. If none fits, report the placement issue and defer the addition until placement is resolved.
 
 Preserve explicit user wording choices unless revision is requested. If preserving a wording choice conflicts with the project entry requirements, disclose the conflict. Do not treat a source description as approved entry copy. A user’s objection establishes a problem with the rejected wording, not acceptance of an agent’s replacement. Do not guess the referent of an ambiguous selection when it changes the resulting entry.
 
@@ -77,7 +79,7 @@ Preserve explicit user wording choices unless revision is requested. If preservi
 
 For each assessed resource, identify it, state its recommendation, and provide a concise rationale with the decisive source links. Follow the selected outcome’s output contract rather than producing a fixed audit report. Call out material uncertainty or unmet submission requirements.
 
-Present each proposed entry as a rendered Markdown list item in a blockquote. Use a fenced code block only when the user explicitly requests raw Markdown. Return one best version unless alternatives are requested or a material editorial choice requires the user’s decision. For wording-only work, return the proposed item and any material caveat without fabricating an inclusion verdict.
+Present each proposed entry as a rendered Markdown list item in a blockquote. Use a fenced code block for an entry only when the user explicitly requests raw Markdown. Return one best version unless alternatives are requested or a material editorial choice requires the user’s decision. For wording-only work, return the proposed item and any material caveat without fabricating an inclusion verdict.
 
 Before delivery, check that the name, destination, and any description match the evidence, that duplication and overlap are reflected in the recommendation, that the placement and Markdown fit the current list, and that the entry follows the [project entry requirements](../../../AGENTS.md).
 
@@ -92,3 +94,21 @@ Add `<resource-name>`
 ```
 
 Approval covers the local addition and its commit, not pushing or submitting a pull request.
+
+After each successful addition commit, follow the [author credit procedure](references/maintainer-workflow.md#credit-entry-authors) if the maintainer workflow is enabled.
+
+## Verify Maintainer Account
+
+Do not mention this check or its result, failure, or selected workflow unless the user asks. This affects narration only, not required tool approvals.
+
+Run this read-only check automatically once per invocation, using `gh`’s existing authentication for `github.com`:
+
+```sh
+gh api graphql --hostname github.com \
+    --raw-field 'query=query { viewer { login } }' \
+    --jq '(.data.viewer.login | ascii_downcase) == "porada"'
+```
+
+Enable the maintainer workflow and load its [guidance](references/maintainer-workflow.md) only when the command exits successfully and prints exactly `true`. Otherwise, keep the standard workflow without loading that reference. Do not require a user-run check or change authentication to enable it.
+
+The check verifies the account authenticating the API request, not a Git author, repository owner, or browser session. Retain the result only for this invocation, then return to [Resolve Scope](#resolve-scope). Verification does not change the inclusion standard or authorize mutations.

@@ -72,6 +72,7 @@
 - [**@async-fn/vitest**](https://github.com/team-igniter-from-houston-inc/async-fn/tree/master/packages/vitest) — Create async mocks with control over when they resolve or reject.
 - [**@fetch-mock/vitest**](https://github.com/wheresrhys/fetch-mock/tree/main/packages/vitest) — Mock `fetch` requests with route matching and HTTP-specific assertions.
 - [**obsidian-test-mocks**](https://github.com/mnaoumov/obsidian-test-mocks) — Mock the Obsidian plugin API.
+- [**tomiko**](https://github.com/Tomiko-M/tomiko) — Record and replay LLM API calls, with assertions for tool calls, token usage, and estimated cost.
 - [**vitest-auto-spy**](https://github.com/ASDAlexey/vitest-auto-spy) — Create typed spies from classes.
 - [**vitest-canvas-mock**](https://github.com/wobsoriano/vitest-canvas-mock) — Mock Canvas 2D APIs and snapshot recorded drawing calls.
 - [**vitest-fetch-mock**](https://github.com/IanVS/vitest-fetch-mock) — Mock `fetch` requests and responses.
